@@ -288,6 +288,14 @@ var Chart = {
      * @return object
      */
     buildWrapper: function buildWrapper(chartType, dataTable, options, containerId) {
+      if (chartType == 'google.charts.Bar') {
+        options = google.charts.Bar.convertOptions(options)
+      } else if (chartType == 'google.charts.Line') {
+        options = google.charts.Line.convertOptions(options)
+      } else if (chartType == 'google.charts.Scatter') {
+        options = google.charts.Scatter.convertOptions(options)
+      }
+
       var wrapper = new google.visualization.ChartWrapper({
         chartType: chartType,
         dataTable: dataTable,
